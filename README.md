@@ -2,6 +2,7 @@
 <p align="center"><em>Command line parser of clover.xml code coverage</em></p>
 
 <p align="center">
+  <a href="https://packagist.org/packages/photogabble/clover-coverage-cli"><img src="https://poser.pugx.org/photogabble/clover-coverage-cli/v/stable.svg" alt="Latest Stable Version"></a>
   <a href="LICENSE"><img src="https://poser.pugx.org/photogabble/clover-coverage-cli/license.svg" alt="License"></a>
 </p>
 
