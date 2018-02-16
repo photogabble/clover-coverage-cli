@@ -46,7 +46,7 @@ class Analyse extends Command
 
             $output->writeln('Code Coverage: ' . number_format($analyser->getCoveragePercentage(), 2) . '%');
         } catch (\Exception $e) {
-            $output->writeln('<error>[!]</error> ' . $e);
+            $output->writeln('<error>[!]</error> ' . $e->getMessage());
             return 2;
         }
 

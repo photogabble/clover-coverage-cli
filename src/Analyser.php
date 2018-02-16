@@ -106,6 +106,7 @@ class Analyser
     public function getTable(OutputInterface $output)
     {
         $table = new Table($output);
+        $table->setStyle('borderless');
         $table->setHeaders(['File', 'Coverage']);
         foreach($this->analysis->files as $name => $file) {
             $percentage = $file->getCoveragePercentage();
@@ -114,10 +115,10 @@ class Analyser
             } elseif ($percentage < $this->warningPercentage) {
                 $icon = '-';
             } else {
-                $icon = '*';
+                $icon = '✓';
             }
 
-            $table->addRow([$name, str_pad(number_format($percentage, 2) . '%', 7, ' ') . $icon]);
+            $table->addRow([$name, str_pad(number_format($percentage, 2) . '%', 7, ' ') . ' ' . $icon]);
         }
         return $table;
     }
