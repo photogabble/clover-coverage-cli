@@ -3,8 +3,8 @@
 
 <p align="center">
   <a href="https://travis-ci.org/photogabble/clover-coverage-cli"><img src="https://travis-ci.org/photogabble/clover-coverage-cli.svg?branch=master" alt="Build Status">
-  <a href="https://packagist.org/packages/photogabble/clover-coverage-cli"><img src="https://poser.pugx.org/photogabble/clover-coverage-cli/v/stable.svg" alt="Latest Stable Version"></a>
-  <a href="LICENSE"><img src="https://poser.pugx.org/photogabble/clover-coverage-cli/license.svg" alt="License"></a>
+  <a href="https://packagist.org/packages/photogabble/clover-coverage"><img src="https://img.shields.io/packagist/v/photogabble/clover-coverage.svg" alt="Latest Stable Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/photogabble/clover-coverage-cli.svg" alt="License"></a>
 </p>
 
 ### Example usage:
