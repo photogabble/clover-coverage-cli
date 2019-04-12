@@ -2,15 +2,17 @@
 <?php
 
 use Photogabble\CloverCoverage\CloverCoverageApplication;
+use Photogabble\CloverCoverage\Commands\Analyse;
 
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require __DIR__ . '/../vendor/autoload.php';
-} elseif (file_exists(__DIR__ . '/../../../autoload.php')) {
-    require __DIR__ . '/../../../autoload.php';
 } else {
-    throw new Exception('Unable to find an autoloader. Please run composer install.');
+    echo 'Cannot find the vendor directory, have you executed composer install?' . PHP_EOL;
+    echo 'See https://getcomposer.org to get Composer.' . PHP_EOL;
+    exit(1);
 }
 
 $app = new CloverCoverageApplication();
-$app->add(new \Photogabble\CloverCoverage\Commands\Analyse());
+$app->add(new Analyse());
+
 $app->run();
