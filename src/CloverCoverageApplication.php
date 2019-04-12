@@ -2,9 +2,11 @@
 
 namespace Photogabble\CloverCoverage;
 
-class CloverCoverageApplication extends \Symfony\Component\Console\Application
+use Symfony\Component\Console\Application;
+
+class CloverCoverageApplication extends Application
 {
-    public function __construct($name = 'Clover Coverage Cli', $version = '1.0.0')
+    public function __construct($name = 'Clover Coverage Cli', $version = '1.1.0')
     {
         parent::__construct($name, $version);
     }
