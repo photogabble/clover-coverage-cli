@@ -51,9 +51,26 @@ class Analyser
         }
 
         $this->filePathname = $filePathname;
-        $this->warningPercentage = $warningPercentage;
-        $this->errorPercentage = $errorPercentage;
-        $this->failurePercentage = $failurePercentage;
+        $this->warningPercentage = $this->normalisePercentage($warningPercentage);
+        $this->errorPercentage = $this->normalisePercentage($errorPercentage);
+        $this->failurePercentage = $this->normalisePercentage($failurePercentage);
+    }
+
+    /**
+     * Normalise the input percentage between 0 and 100.
+     *
+     * @param int $input
+     * @return int
+     */
+    private function normalisePercentage($input)
+    {
+        if ($input < 0) {
+            return 0;
+        } else if ($input > 100) {
+            return 100;
+        }
+
+        return $input;
     }
 
     /**

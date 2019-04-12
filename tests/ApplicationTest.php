@@ -23,9 +23,17 @@ class ApplicationTest extends TestCase
         $this->assertEquals(2, $applicationTester->run(['command' => 'analyse', 'clover-file' => 'not-exist.xml']));
 
         // Expect Error with invalid xml file
-        $this->assertEquals(1, $applicationTester->run(['command' => 'analyse', 'clover-file' => realpath(__DIR__ . DIRECTORY_SEPARATOR . 'broken.xml')]));
+        $this->assertEquals(1, $applicationTester->run(['command' => 'analyse', 'clover-file' => $this->realpath('broken.xml')]));
 
         // Expect No Error with valid xml file location
-        $this->assertEquals(0, $applicationTester->run(['command' => 'analyse', 'clover-file' => realpath(__DIR__ . DIRECTORY_SEPARATOR . 'clover.xml')]));
+        $this->assertEquals(0, $applicationTester->run(['command' => 'analyse', 'clover-file' => $this->realpath('clover.xml')]));
+
+        // Expect Error with valid xml file that has coverage below --exit
+        $this->assertEquals(1, $applicationTester->run(['command' => 'analyse', 'clover-file' => $this->realpath('clover.xml'), '--exit' => 90]));
+    }
+
+    private function realpath($string)
+    {
+        return realpath(__DIR__ . DIRECTORY_SEPARATOR . $string);
     }
 }
