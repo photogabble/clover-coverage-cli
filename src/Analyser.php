@@ -2,6 +2,8 @@
 
 namespace Photogabble\CloverCoverage;
 
+use Exception;
+use SimpleXMLElement;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -40,12 +42,12 @@ class Analyser
      * @param int $errorPercentage
      * @param int $failurePercentage
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($filePathname, $warningPercentage = 90, $errorPercentage = 80, $failurePercentage = 0)
     {
-        if (! file_exists($filePathname)){
-            throw new \Exception('No file could be read at path ['. $filePathname .']');
+        if (!file_exists($filePathname)) {
+            throw new Exception('No file could be read at path [' . $filePathname . ']');
         }
 
         $this->filePathname = $filePathname;
@@ -61,7 +63,7 @@ class Analyser
      */
     public function analyse()
     {
-        $cloverXml = new \SimpleXMLElement($this->filePathname, null, true);
+        $cloverXml = new SimpleXMLElement($this->filePathname, null, true);
         $analysis = new Analysis();
 
         foreach ($cloverXml->xpath('//file') as $file) {
@@ -108,9 +110,9 @@ class Analyser
         $table = new Table($output);
         $table->setStyle('borderless');
         $table->setHeaders(['File', 'Coverage']);
-        foreach($this->analysis->files as $name => $file) {
+        foreach ($this->analysis->files as $name => $file) {
             $percentage = $file->getCoveragePercentage();
-            if ($percentage < $this->errorPercentage){
+            if ($percentage < $this->errorPercentage) {
                 $icon = '!';
             } elseif ($percentage < $this->warningPercentage) {
                 $icon = '-';

@@ -2,6 +2,7 @@
 
 namespace Photogabble\CloverCoverage\Commands;
 
+use Exception;
 use Photogabble\CloverCoverage\Analyser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,13 +40,13 @@ class Analyse extends Command
                 return 1;
             }
 
-            if ($input->getOption('summary') === false ){
+            if ($input->getOption('summary') === false) {
                 $table = $analyser->getTable($output);
                 $table->render();
             }
 
             $output->writeln('Code Coverage: ' . number_format($analyser->getCoveragePercentage(), 2) . '%');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $output->writeln('<error>[!]</error> ' . $e->getMessage());
             return 2;
         }
